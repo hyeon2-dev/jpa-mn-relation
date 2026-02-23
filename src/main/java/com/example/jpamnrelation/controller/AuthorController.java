@@ -2,6 +2,7 @@ package com.example.jpamnrelation.controller;
 
 import com.example.jpamnrelation.dto.AuthorRequestDto;
 import com.example.jpamnrelation.dto.AuthorResponseDto;
+import com.example.jpamnrelation.dto.BookResponseDto;
 import com.example.jpamnrelation.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,9 @@ public class AuthorController {
 
     // 저자가 쓴 책 조회
     @GetMapping("/authors/{authorId}/books")
-    public ResponseEntity<List<AuthorResponseDto>> getAllAuthors () {}
+    public ResponseEntity<List<BookResponseDto>> getBooksByAuthor (@PathVariable Long authorId) {
+        return ResponseEntity.ok(authorService.getBooksByAuthor(authorId));
+    }
 
 
 }
